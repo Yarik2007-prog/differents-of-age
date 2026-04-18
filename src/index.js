@@ -5,7 +5,7 @@ function getNameYear(year) {
         return "year";
     }
     return "years";
-}
+};
 
 function getAgeDifference(ageOfFather, ageOfSon) {
     let diff = ageOfFather - 2 * ageOfSon;
@@ -28,6 +28,6 @@ function getAgeDifference(ageOfFather, ageOfSon) {
         return `The father will be twice as old as the son in ${-diff} ${years}`;
     }
     return `The father is twice as old as the son right now`;
-}
+};
 
 console.log(getAgeDifference(40, 20));
