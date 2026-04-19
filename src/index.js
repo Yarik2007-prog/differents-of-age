@@ -13,8 +13,7 @@ function getAgeDifference(ageOfFather, ageOfSon) {
     let years = getNameYear(diff);
 
     if (
-        ageOfFather - ageOfSon < 15 ||
-        ageOfFather < 0 ||
+        (ageOfFather - ageOfSon) < 15 ||
         ageOfSon < 0 ||
         typeof ageOfFather !== "number" ||
         typeof ageOfSon !== "number"
