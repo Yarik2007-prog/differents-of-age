@@ -19,23 +19,25 @@ function getAgeDifference(ageOfFather, ageOfSon) {
     if (
         (ageOfFather - ageOfSon) < 15 ||
         ageOfSon < 0 ||
+        ageOfFather < 0 ||
         typeof ageOfFather !== "number" ||
         typeof ageOfSon !== "number"
     ) {
         return NaN;
     }
 
-    return ageOfFather - 2 * ageOfSon;
+    return 2 * ageOfSon - ageOfFather;
 }
 
-const FATHER_AGE = 59;
-const SON_AGE = -2;
+const FATHER_AGE = 60;
+const SON_AGE = 40;
 const year = getAgeDifference(FATHER_AGE, SON_AGE);
 const strYears = getNameYear(year);
 
 switch (true) {
-    case (Number.isNaN(year)):console.log(`Invalid data!`);
-    break;
+    case Number.isNaN(year):
+        console.log(`Invalid data!`);
+        break;
     case year > 0:
         console.log(
             `The father was twice as old as the son ${year} ${strYears} ago`,
