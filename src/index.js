@@ -1,3 +1,5 @@
+"use strict";
+
 function getNameYear(year) {
     year = Math.abs(year);
 
@@ -5,28 +7,45 @@ function getNameYear(year) {
         return "year";
     }
     return "years";
-};
+}
+
+/**
+ * @param {number} = ageOfFather;
+ * @param {number} = ageOfSon;
+ * @returns {number}
+ * */
 
 function getAgeDifference(ageOfFather, ageOfSon) {
-    let diff = ageOfFather - 2 * ageOfSon;
-
-    let years = getNameYear(diff);
-
     if (
         (ageOfFather - ageOfSon) < 15 ||
         ageOfSon < 0 ||
         typeof ageOfFather !== "number" ||
         typeof ageOfSon !== "number"
-    )
+    ) {
         return NaN;
-
-    if (diff > 0) {
-        return `The father was twice as old as the son ${diff} ${years} ago`;
     }
-    if (diff < 0) {
-        return `The father will be twice as old as the son in ${-diff} ${years}`;
-    }
-    return `The father is twice as old as the son right now`;
-};
 
-console.log(getAgeDifference(40, 20));
+    return ageOfFather - 2 * ageOfSon;
+}
+
+const FATHER_AGE = 59;
+const SON_AGE = -2;
+const year = getAgeDifference(FATHER_AGE, SON_AGE);
+const strYears = getNameYear(year);
+
+switch (true) {
+    case (Number.isNaN(year)):console.log(`Invalid data!`);
+    break;
+    case year > 0:
+        console.log(
+            `The father was twice as old as the son ${year} ${strYears} ago`,
+        );
+        break;
+    case year < 0:
+        console.log(
+            `The father will be twice as old as the son in ${-year} ${strYears}`,
+        );
+        break;
+    default:
+        console.log(`The father is twice as old as the son right now`);
+}
